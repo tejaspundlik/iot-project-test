@@ -1,6 +1,6 @@
 # Testing of deployment
 
-## Tested apk deployment of an sample app
+## Tested apk deployment of a sample app
 
 Testing
 - [x] APK deployment
