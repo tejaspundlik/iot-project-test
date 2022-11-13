@@ -6,7 +6,7 @@ Testing
 - [x] APK deployment
 - [x] Button rendering
 - [x] Images rendering
-- [x] Emogi rendering
+- [x] Emoji rendering
 - [ ] Sound rendering
 - [ ] Favicon icon
 - [ ] Bluetooth permission
