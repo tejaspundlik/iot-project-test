@@ -1,13 +1,29 @@
 import { StatusBar } from "expo-status-bar";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { Audio } from "expo-av";
 
 export default function App() {
+  const [sound, setSound] = React.useState();
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("./assets/Score.mp3")
+    );
+    setSound(sound);
+    await sound.playAsync();
+  }
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
   return (
     <View style={styles.container}>
-      <Text>Hello Aatmaj From 🦍{"\n\n"}</Text>
+      <Text>Hello! Welcome To /appName/{"\n\n"}</Text>
       <Image
         source={{
-          uri: "https://avatars.githubusercontent.com/u/83284294?v=4",
+          uri: "https://cdn-icons-png.flaticon.com/512/1491/1491517.png",
         }}
         style={{ width: 200, height: 200 }}
       />
@@ -15,7 +31,8 @@ export default function App() {
       <Button
         title="Get Score"
         color="#841584"
-        accessibilityLabel="Get The Score Of The Test"
+        accessibilityLabel="Gets The Score Of The Test"
+        onPress={playSound}
       />
       <StatusBar style="auto" />
     </View>
