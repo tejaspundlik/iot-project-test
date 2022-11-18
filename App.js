@@ -3,21 +3,12 @@ import { Button, Image, StyleSheet, Text, View } from "react-native";
 import { Audio } from "expo-av";
 
 export default function App() {
-  const [sound, setSound] = React.useState();
-  async function playSound() {
-    const { sound } = await Audio.Sound.createAsync(
-      require("./assets/Score.mp3")
-    );
-    setSound(sound);
-    await sound.playAsync();
-  }
-  React.useEffect(() => {
-    return sound
-      ? () => {
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
+  playSound = () => {
+    const audio = new Audio.Sound();
+    audio.loadAsync(require("https://audio.code.org/start1.mp3"));
+    audio.playAsync();
+    audio.unloadAsync();
+  };
   return (
     <View style={styles.container}>
       <Text>Hello! Welcome To /appName/{"\n\n"}</Text>
