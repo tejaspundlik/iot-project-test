@@ -5,7 +5,7 @@ import { Audio } from "expo-av";
 export default function App() {
   playSound = () => {
     const audio = new Audio.Sound();
-    audio.loadAsync(require("https://audio.code.org/start1.mp3"));
+    audio.loadAsync(require("./assets/Score.mp3"));
     audio.playAsync();
     audio.unloadAsync();
   };
