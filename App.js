@@ -1,17 +1,29 @@
+import * as React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 import { Audio } from "expo-av";
 
 export default function App() {
-  playSound = () => {
-    const audio = new Audio.Sound();
-    audio.loadAsync(require("./assets/Score.mp3"));
-    audio.playAsync();
-    audio.unloadAsync();
-  };
+  const [sound, setSound] = React.useState();
+
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("./assets/Score.mp3")
+    );
+    setSound(sound);
+    await sound.playAsync();
+  }
+
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
   return (
     <View style={styles.container}>
-      <Text>Hello! Welcome To /appName/{"\n\n"}</Text>
+      <Text>Hello! Welcome To ImProv{"\n\n"}</Text>
       <Image
         source={{
           uri: "https://cdn-icons-png.flaticon.com/512/1491/1491517.png",
