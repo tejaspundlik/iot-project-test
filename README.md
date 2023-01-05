@@ -8,6 +8,6 @@ Testing
 - [x] Button rendering
 - [x] Images rendering
 - [x] Emoji rendering
-- [ ] Sound rendering
-- [ ] Favicon icon
-- [ ] Bluetooth permission
+- [x] Sound rendering
+- [x] Favicon icon
+- [x] Bluetooth permission
